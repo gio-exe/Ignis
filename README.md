@@ -14,7 +14,7 @@ Ignis is a lightweight and easy to use command line tool that makes managing Bac
 
 ---
 
-## Setup
+## How to run
 
     git clone https://github.com/gio-exe/Ignis
 
