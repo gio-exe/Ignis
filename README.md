@@ -3,7 +3,7 @@
   <img width="459" height="395" alt="2-removebg-preview" src="https://github.com/user-attachments/assets/174650c5-4561-42ab-8775-ad843d6a186e" />
 </p>
 
-Ignis is a lightweight and user friendly CLI tool designed to simplify managing Backblaze B2 cloud storage. You can connect to buckets by providing credentials during setup.
+Ignis is a lightweight and user friendly CLI tool designed to simplify managing Backblaze B2 cloud storage. You can connect to buckets by providing credentials during setup. (300x easier to learn and use than Backblaze's official CLI tool)
 
 ## Features
 
