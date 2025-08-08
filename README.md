@@ -2,7 +2,7 @@
 <p align="center">
   <img width="459" height="395" alt="2-removebg-preview" src="https://github.com/user-attachments/assets/174650c5-4561-42ab-8775-ad843d6a186e" />
 </p>
-Ignis is a lightweight and easy to use command line tool that makes managing Backblaze B2 cloud storage simpler. Since the [official Backblaze CLI](https://github.com/Backblaze/B2_Command_Line_Tool) can be harder to install and use, Ignis simplifies the process. Just enter your credentials during setup to connect to your buckets.
+Ignis is a lightweight and easy to use command line tool that makes managing Backblaze B2 cloud storage simpler. Since the official Backblaze CLI can be harder to install and use, Ignis simplifies the process. Just enter your credentials during setup to connect to your buckets.
 ## Features
 
 - **Upload files** directly to Backblaze B2 buckets  
