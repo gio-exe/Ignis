@@ -20,5 +20,7 @@ git clone https://github.com/gio-exe/Ignis
 
 cd Ignis
 
+chmod +x ./run.sh
+
 ./run.sh
 ```
