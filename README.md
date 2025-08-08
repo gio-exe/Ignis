@@ -1,14 +1,14 @@
-# Ignis
+<h1 align="center">Ignis</h1>
+<p align="center">
+  <img width="459" height="395" alt="2-removebg-preview" src="https://github.com/user-attachments/assets/174650c5-4561-42ab-8775-ad843d6a186e" />
+</p>
 
-Ignis is a lightweight and user friendly CLI tool for managing your Backblaze B2 cloud storage.
-Simply provide bucket credentials on setup and start managing files.
-
----
+Ignis is a lightweight and user friendly CLI tool designed to simplify managing Backblaze B2 cloud storage. You can connect to buckets by providing credentials during setup.
 
 ## Features
 
 - **Upload files** directly to Backblaze B2 buckets  
-- **List files** stored  
+- **List files** stored
 - **Download files** to your local machine  
 - **Delete files** from buckets  
 - **Easy configuration and setup** with credentials and bucket details  
@@ -16,12 +16,69 @@ Simply provide bucket credentials on setup and start managing files.
 ---
 
 ## Setup
-```
-git clone https://github.com/gio-exe/Ignis
 
-cd Ignis
+    git clone https://github.com/gio-exe/Ignis
 
-chmod +x ./run.sh
+    cd Ignis
 
-./run.sh
-```
+    chmod +x ./run.sh
+
+    ./run.sh
+
+---
+
+## Usage
+
+- **1. Upload**
+
+  Upload a file to your Backblaze B2 bucket.
+
+      > 1
+      File path: /path/to/file.txt
+      Uploaded file.txt
+
+- **2. List**
+
+  List all files currently stored in your bucket.
+
+      > 2
+      Files:
+      ID#0: file.txt (1024 bytes)
+      ID#1: image.png (200000 bytes)
+
+- **3. Download**
+
+  Download a file from your bucket to a local directory.
+
+      > 3
+      File ID to download: 0
+      Folder path to download into (default current dir): /home/user/downloads
+      Downloaded 'file.txt' to /home/user/downloads/file.txt
+
+- **4. Delete**
+
+  Delete a file from your bucket.
+
+      > 4
+      File ID to delete: 1
+      Deleted 'example.txt'
+
+- **5. View**
+
+  View the contents of a text file.
+
+      > 5
+      File ID to view: 0
+
+      ------ FILE CONTENT START ------
+
+      Content of file.txt. Hello world!
+
+      ------- FILE CONTENT END -------
+
+- **6. Exit**
+
+  Exit the application.
+
+      > 6
+      Goodbye!
