@@ -16,8 +16,11 @@ Ignis is a simple, efficient CLI for managing Backblaze's B2 cloud storage.
 
 ## Setup
 
-1. **Clone the repository:**  
-
+1.  
 git clone https://github.com/gio-exe/Ignis
 
-2. Run ./run.sh and input your app key and bucket info
+2.
+cd Ignis
+
+3.
+Run ./run.sh and input your app key and bucket info
