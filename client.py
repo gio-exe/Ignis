@@ -1,6 +1,21 @@
 import os
 import requests
 import hashlib
+from urllib.parse import quote
+
+class UploadProgress:
+    def __init__(self, fileobj, filesize, progress_callback):
+        self.fileobj = fileobj
+        self.filesize = filesize
+        self.progress_callback = progress_callback
+        self.read_bytes = 0
+
+    def read(self, size=-1):
+        data = self.fileobj.read(size)
+        if data:
+            self.read_bytes += len(data)
+            self.progress_callback(self.read_bytes, self.filesize)
+        return data
 
 class B2:
     def __init__(self, kid, ak, bid, bucket_name):
@@ -37,22 +52,31 @@ class B2:
         h.update(data)
         return h.hexdigest()
 
-    def upload(self, filepath):
+    def upload(self, filepath, progress_callback=None):
+        filesize = os.path.getsize(filepath)
         with open(filepath, 'rb') as f:
-            data = f.read()
+            data_for_hash = f.read()
+            sha1_hash = self.sha1(data_for_hash)
+
         upload_info = self.get_upload_url()
-        filename = os.path.basename(filepath)
+        raw_filename = os.path.basename(filepath)
+        encoded_filename = quote(raw_filename, safe='')
+
         headers = {
             'Authorization': upload_info['authorizationToken'],
-            'X-Bz-File-Name': filename,
+            'X-Bz-File-Name': encoded_filename,
             'Content-Type': 'b2/x-auto',
-            'X-Bz-Content-Sha1': self.sha1(data),
+            'X-Bz-Content-Sha1': sha1_hash,
+            'Content-Length': str(filesize),
         }
-        r = requests.post(
-            upload_info['uploadUrl'],
-            headers=headers,
-            data=data
-        )
+
+        with open(filepath, 'rb') as f:
+            data_to_send = UploadProgress(f, filesize, progress_callback) if progress_callback else f
+            r = requests.post(
+                upload_info['uploadUrl'],
+                headers=headers,
+                data=data_to_send
+            )
         r.raise_for_status()
         return r.json()
 
