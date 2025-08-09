@@ -1,10 +1,21 @@
 import os
+import sys
 import tempfile
 from client import B2
 import config
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def print_progress(uploaded, total):
+    percent = uploaded / total * 100
+    bar_len = 40
+    filled_len = int(bar_len * uploaded // total)
+    bar = '=' * filled_len + '-' * (bar_len - filled_len)
+    sys.stdout.write(f"\rUploading.. [{bar}] {percent:6.2f}%")
+    sys.stdout.flush()
+    if uploaded == total:
+        print()
 
 def main():
     clear_screen()
@@ -29,10 +40,10 @@ def main():
                 print("File not found.")
                 continue
             try:
-                resp = c.upload(path)
+                resp = c.upload(path, progress_callback=print_progress)
                 print(f"Uploaded {os.path.basename(path)}")
             except Exception as e:
-                print(f"Upload error: {e}")
+                print(f"\nUpload error: {e}")
 
         elif choice == '2':
             try:
